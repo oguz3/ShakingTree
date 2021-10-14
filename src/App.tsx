@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Apple from "./components/Apple";
+import Basket from "./components/Basket";
+import Tree from "./components/Tree";
+
+import { useAppSelector, useAppDispatch } from "./store/hooks";
+import {
+  dropRandomlyApple,
+  selectnumberOfApple,
+  selectnumberOfFallApple,
+} from "./store/tree";
 
 function App() {
+  const number_apple = useAppSelector(selectnumberOfApple);
+  const number_fall_apple = useAppSelector(selectnumberOfFallApple);
+  const dispatch = useAppDispatch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {number_apple} - {number_fall_apple}
+      <button
+        onClick={() => {
+          dispatch(dropRandomlyApple());
+        }}
+      >
+        düşür
+      </button>
+      <Tree />
+      <Apple />
+      <Basket />
+    </>
   );
 }
 
