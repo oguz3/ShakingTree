@@ -1,0 +1,14 @@
+.basket {
+  position: relative;
+  margin-top: 60px;
+  width: 200px;
+  height: 200px;
+  background-color: rgb(139, 60, 7);
+
+  .apple_wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: flex-end;
+    flex-wrap: wrap-reverse;
+  }
+}

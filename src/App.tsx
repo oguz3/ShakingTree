@@ -3,15 +3,11 @@ import Basket from "./components/Basket";
 import Tree from "./components/Tree";
 
 import { useAppSelector, useAppDispatch } from "./store/hooks";
-import {
-  dropRandomlyApple,
-  moveAppleToBasket,
-  selectnumberOfFallApple,
-} from "./store/tree";
+import { dropRandomlyApple, selectnumberOfFallApple } from "./store/tree";
 
 function App() {
-  const number_fall_apple = useAppSelector(selectnumberOfFallApple);
   const dispatch = useAppDispatch();
+  const number_fall_apple = useAppSelector(selectnumberOfFallApple);
 
   return (
     <>
@@ -19,9 +15,6 @@ function App() {
       <button
         onClick={() => {
           dispatch(dropRandomlyApple());
-          setTimeout(() => {
-            dispatch(moveAppleToBasket());
-          }, 1000);
         }}
       >
         düşür

@@ -4,24 +4,23 @@ import { RootState } from "../index";
 import { getRandomInteger, generateApple } from "../../lib";
 
 export type AppleProps = {
-  id?: string;
+  id: string;
   top?: string;
   left?: string;
   isFall?: boolean;
+  isInBasket: boolean;
   fallTimeout?: number;
 };
 
 export type Tree = {
   apple_list: Array<AppleProps>;
   droped_apple_list: Array<AppleProps>;
-  number_of_fall_apple: number;
   total_number_of_fall_apple: number;
 };
 
 const initialState: Tree = {
   apple_list: generateApple(),
   droped_apple_list: [],
-  number_of_fall_apple: 0,
   total_number_of_fall_apple: 0,
 };
 
@@ -30,26 +29,35 @@ export const treeSlice = createSlice({
   initialState,
   reducers: {
     dropRandomlyApple: (state: any) => {
-      if (state?.apple_list.length === 0) return state;
-      let number_falling_apple = getRandomInteger(1, state?.apple_list.length);
-      state.number_falling_apple = number_falling_apple;
-      state.total_number_of_fall_apple += number_falling_apple;
-      for (let i = 0; i < number_falling_apple; i++) {
-        state.apple_list = [
-          ...state.apple_list,
-          (state.apple_list[0].isFall = true),
-        ];
-      }
-    },
-    moveAppleToBasket: (state: any) => {
-      state.apple_list.forEach((apple: AppleProps) => {
-        if (apple.isFall) {
-          state.droped_apple_list = [...state.droped_apple_list, apple];
-          state.apple_list = [
-            ...state.apple_list.slice(state.number_of_fall_apple),
-          ];
+      let apples_on_tree = state.apple_list.filter(
+        (apple: AppleProps) => apple.isFall === false
+      );
+      if (apples_on_tree.length === 0) return state;
+      let number_falling_apple = getRandomInteger(1, apples_on_tree.length);
+      let count: number = 0;
+      let newArr = state.apple_list.map((obj: AppleProps, index: number) => {
+        if (count < number_falling_apple && !obj.isFall) {
+          count++;
+          return { ...obj, isFall: true };
+        } else {
+          return obj;
         }
       });
+      state.total_number_of_fall_apple += number_falling_apple;
+      state.apple_list = newArr;
+    },
+    moveAppleToBasket: (state: any, action) => {
+      let selectedApple = state.apple_list.find(
+        (obj: AppleProps) => obj.id === action.payload
+      );
+      const filteredItems = state.apple_list.filter(
+        (apple: AppleProps) => apple !== selectedApple
+      );
+      state.apple_list = filteredItems;
+      state.droped_apple_list = [
+        ...state.droped_apple_list,
+        { ...selectedApple, isInBasket: true },
+      ];
     },
   },
 });
@@ -60,6 +68,6 @@ export const selectApplesOnTree = (state: RootState) => state.tree.apple_list;
 export const selectDropedApples = (state: RootState) =>
   state.tree.droped_apple_list;
 export const selectnumberOfFallApple = (state: RootState) =>
-  state.tree.number_of_fall_apple;
+  state.tree.total_number_of_fall_apple;
 
 export default treeSlice.reducer;

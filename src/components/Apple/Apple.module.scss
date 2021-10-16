@@ -4,5 +4,14 @@
   height: 24px;
   border-radius: 12px;
   background-color: red;
-  transition: top 400ms linear;
+
+  &.fall_transition {
+    transition: top 400ms linear;
+  }
+
+  &.in_basket {
+    position: relative;
+    top: auto;
+    left: auto;
+  }
 }
