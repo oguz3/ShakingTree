@@ -34,7 +34,7 @@ const Apple: React.FC<AppleProps> = ({
       setTimeout(() => {
         console.log("go basket", id);
         dispatch(moveAppleToBasket(id));
-      }, 1000);
+      }, 1600); // wait = 1000ms, drop = 600ms
     }
   }, [isFallTime]);
 
@@ -46,7 +46,7 @@ const Apple: React.FC<AppleProps> = ({
         isFallTime && styles.fall_transition
       )}
       style={{
-        top: isFallTime ? "90%" : isInBasket ? "auto" : top,
+        top: isFallTime ? "94%" : isInBasket ? "auto" : top,
         left: isInBasket ? "auto" : left,
       }}
     >
