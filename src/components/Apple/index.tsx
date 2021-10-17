@@ -3,7 +3,7 @@ import { AppleProps } from "store/tree";
 import cn from "classnames";
 import styles from "./Apple.module.scss";
 
-import apple_image from "../../assets/image/apple.svg";
+import apple_image from "../../assets/image/apple_1.svg";
 
 import { useAppDispatch } from "../../store/hooks";
 import { moveAppleToBasket } from "../../store/tree";

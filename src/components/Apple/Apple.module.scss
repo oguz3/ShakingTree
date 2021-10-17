@@ -1,13 +1,19 @@
 .apple {
   position: absolute;
+  display: flex;
+  align-items: center;
 
   & > img {
-    width: 24px;
+    width: 14px;
     height: auto;
+
+    @media screen and (min-width: 620px) {
+      width: 18px;
+    }
   }
 
   &.fall_transition {
-    transition: top 400ms linear;
+    transition: top 600ms linear;
   }
 
   &.in_basket {

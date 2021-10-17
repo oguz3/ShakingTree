@@ -1,9 +1,14 @@
 .basket {
   position: absolute;
-  width: 225px;
-  height: 100px;
   bottom: 10px;
-  left: 20%;
+  left: 16px;
+  width: 120px;
+  height: 54px;
+  @media screen and (min-width: 620px) {
+    width: 200px;
+    height: 100px;
+    left: 20%;
+  }
 
   & > img {
     position: absolute;
@@ -13,12 +18,16 @@
 
   .apple_wrapper {
     position: absolute;
-    bottom: 92%;
+    bottom: 102%;
     width: 80%;
     left: 10%;
     display: flex;
     justify-content: center;
     align-content: flex-end;
     flex-wrap: wrap-reverse;
+
+    @media screen and (min-width: 620px) {
+      bottom: 86%;
+    }
   }
 }

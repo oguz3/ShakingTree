@@ -18,7 +18,7 @@ export const generateApple = () => {
       left: `${getRandomInteger(14, 80)}%`,
       isFall: false,
       isInBasket: false,
-      fallTimeout: getRandomInteger(800, 1600),
+      fallTimeout: getRandomInteger(1000, 4000),
     };
   });
 

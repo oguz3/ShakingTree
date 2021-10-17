@@ -12,17 +12,26 @@
 
   .counter {
     position: absolute;
-    top: 24px;
-    left: 32px;
+    left: 8px;
+    top: 6px;
     font-family: "Patrick Hand", sans-serif;
     font-weight: 400;
-    font-size: 32px;
+    font-size: 24px;
     line-height: 120%;
+    @media screen and (min-width: 620px) {
+      top: 24px;
+      left: 32px;
+      font-size: 32px;
+    }
   }
 
   .button_Wrapper {
     position: absolute;
-    top: 24px;
-    right: 32px;
+    right: 8px;
+    top: 6px;
+    @media screen and (min-width: 620px) {
+      top: 24px;
+      right: 32px;
+    }
   }
 }
