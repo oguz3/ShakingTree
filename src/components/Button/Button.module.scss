@@ -1,0 +1,32 @@
+.button {
+  position: relative;
+  font-family: "Patrick Hand", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: #000;
+  border: none;
+  padding: 0;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #000;
+  transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+  background-color: black;
+  cursor: pointer;
+
+  & > span {
+    background: #fff;
+    display: block;
+    padding: 6px 24px;
+    border-radius: 5px;
+    border: 2px solid #000;
+  }
+
+  &:active {
+    top: 4px;
+    padding-bottom: 0px;
+    box-shadow: 0 1px 0 #000;
+  }
+}

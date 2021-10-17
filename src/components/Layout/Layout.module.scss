@@ -1,0 +1,28 @@
+.layout {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+
+  .counter {
+    position: absolute;
+    top: 24px;
+    left: 32px;
+    font-family: "Patrick Hand", sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 120%;
+  }
+
+  .button_Wrapper {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+  }
+}
