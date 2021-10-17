@@ -3,6 +3,8 @@ import { AppleProps } from "store/tree";
 import cn from "classnames";
 import styles from "./Apple.module.scss";
 
+import apple_image from "../../assets/image/apple.svg";
+
 import { useAppDispatch } from "../../store/hooks";
 import { moveAppleToBasket } from "../../store/tree";
 
@@ -44,10 +46,12 @@ const Apple: React.FC<AppleProps> = ({
         isFallTime && styles.fall_transition
       )}
       style={{
-        top: isFallTime ? "100%" : isInBasket ? "auto" : top,
+        top: isFallTime ? "90%" : isInBasket ? "auto" : top,
         left: isInBasket ? "auto" : left,
       }}
-    />
+    >
+      <img src={apple_image} alt="apple" />
+    </div>
   );
 };
 

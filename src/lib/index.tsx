@@ -14,8 +14,8 @@ export const generateApple = () => {
   appleArr = [...Array(getRandomInteger(12, 20))].map((x, i) => {
     return {
       id: uniqueId(i),
-      top: `${getRandomInteger(0, 200)}px`,
-      left: `${getRandomInteger(0, 200)}px`,
+      top: `${getRandomInteger(20, 40)}%`,
+      left: `${getRandomInteger(14, 80)}%`,
       isFall: false,
       isInBasket: false,
       fallTimeout: getRandomInteger(400, 1600),

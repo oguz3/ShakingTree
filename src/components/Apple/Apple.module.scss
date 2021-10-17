@@ -1,9 +1,10 @@
 .apple {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-  background-color: red;
+
+  & > img {
+    width: 24px;
+    height: auto;
+  }
 
   &.fall_transition {
     transition: top 400ms linear;

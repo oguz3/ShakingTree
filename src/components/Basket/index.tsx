@@ -2,6 +2,8 @@ import React from "react";
 import Apple from "../Apple";
 import styles from "./Basket.module.scss";
 
+import basket_image from "../../assets/image/basket.svg";
+
 import { useAppSelector } from "../../store/hooks";
 import { selectDropedApples } from "../../store/tree";
 
@@ -10,6 +12,7 @@ function Basket() {
 
   return (
     <div className={styles.basket}>
+      <img src={basket_image} alt="basket" />
       <div className={styles.apple_wrapper}>
         {dropedApples.map((apple) => {
           return <Apple key={apple.id} {...apple} />;
