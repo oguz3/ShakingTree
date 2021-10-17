@@ -24,9 +24,14 @@
     border: 2px solid #000;
   }
 
-  &:active {
+  &:enabled:active {
     top: 4px;
     padding-bottom: 0px;
     box-shadow: 0 1px 0 #000;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
   }
 }
