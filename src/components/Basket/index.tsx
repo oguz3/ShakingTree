@@ -14,9 +14,11 @@ function Basket() {
     <div className={styles.basket}>
       <img src={basket_image} alt="basket" />
       <div className={styles.apple_wrapper}>
-        {dropedApples.map((apple) => {
-          return <Apple key={apple.id} {...apple} />;
-        })}
+        {dropedApples &&
+          !!dropedApples.length &&
+          dropedApples.map((apple) => {
+            return <Apple key={apple.id} {...apple} />;
+          })}
       </div>
     </div>
   );
