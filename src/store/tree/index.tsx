@@ -69,7 +69,9 @@ export const { shakeTheTree, moveAppleToBasket, dropRandomlyApple, resetTree } =
   treeSlice.actions;
 
 export const selectApplesOnTree = (state: RootState) =>
-  state.tree.apple_list.filter((apple: AppleProps) => apple.isFall === false);
+  state.tree.apple_list.filter(
+    (apple: AppleProps) => apple.isInBasket === false
+  );
 export const selectApplesInBasket = (state: RootState) =>
   state.tree.apple_list.filter(
     (apple: AppleProps) => apple.isInBasket === true
