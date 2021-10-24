@@ -23,7 +23,6 @@ const Apple: React.FC<AppleProps> = ({
   useEffect(() => {
     if (!isInBasket && isFall) {
       setTimeout(() => {
-        console.log("fall zamanı");
         setIsFallTime(true);
       }, fallTimeout);
     }
@@ -32,7 +31,6 @@ const Apple: React.FC<AppleProps> = ({
   useEffect(() => {
     if (isFallTime) {
       setTimeout(() => {
-        console.log("go basket", id);
         dispatch(moveAppleToBasket(id));
       }, 1600); // wait = 1000ms, drop = 600ms
     }

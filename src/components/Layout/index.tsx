@@ -10,6 +10,7 @@ import {
   dropRandomlyApple,
   selectnumberOfFallApple,
   selectIsTreeBusy,
+  resetTree,
 } from "../../store/tree";
 
 import styles from "./Layout.module.scss";
@@ -34,6 +35,14 @@ function Layout() {
           }}
         >
           Shake
+        </Button>
+        <Button
+          disabled={isTreeBusy}
+          onClick={() => {
+            dispatch(resetTree());
+          }}
+        >
+          Reset
         </Button>
       </div>
       <Tree />

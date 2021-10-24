@@ -4,7 +4,7 @@ import styles from "./Button.module.scss";
 
 type Props = {
   children: ReactChild;
-  disabled: boolean;
+  disabled?: boolean;
   onClick?: () => void;
 };
 

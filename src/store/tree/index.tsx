@@ -64,10 +64,18 @@ export const treeSlice = createSlice({
         { ...selectedApple, isInBasket: true },
       ];
     },
+    resetTree: () => {
+      return {
+        apple_list: generateApple(),
+        droped_apple_list: [],
+        total_number_of_fall_apple: 0,
+        isShaking: false,
+      };
+    },
   },
 });
 
-export const { shakeTheTree, moveAppleToBasket, dropRandomlyApple } =
+export const { shakeTheTree, moveAppleToBasket, dropRandomlyApple, resetTree } =
   treeSlice.actions;
 
 export const selectApplesOnTree = (state: RootState) => state.tree.apple_list;
