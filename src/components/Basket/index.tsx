@@ -5,10 +5,10 @@ import styles from "./Basket.module.scss";
 import basket_image from "../../assets/image/basket.svg";
 
 import { useAppSelector } from "../../store/hooks";
-import { selectDropedApples } from "../../store/tree";
+import { selectApplesInBasket } from "../../store/tree";
 
 function Basket() {
-  const dropedApples = useAppSelector(selectDropedApples);
+  const dropedApples = useAppSelector(selectApplesInBasket);
 
   return (
     <div className={styles.basket}>

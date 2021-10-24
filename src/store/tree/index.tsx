@@ -14,15 +14,11 @@ export type AppleProps = {
 
 export type Tree = {
   apple_list: Array<AppleProps>;
-  droped_apple_list: Array<AppleProps>;
-  total_number_of_fall_apple: number;
   isShaking: boolean;
 };
 
 const initialState: Tree = {
   apple_list: generateApple(),
-  droped_apple_list: [],
-  total_number_of_fall_apple: 0,
   isShaking: false,
 };
 
@@ -48,27 +44,21 @@ export const treeSlice = createSlice({
           return obj;
         }
       });
-      state.total_number_of_fall_apple += number_falling_apple;
       state.apple_list = newArr;
     },
     moveAppleToBasket: (state: any, action) => {
-      let selectedApple = state.apple_list.find(
-        (obj: AppleProps) => obj.id === action.payload
-      );
-      const filteredItems = state.apple_list.filter(
-        (apple: AppleProps) => apple !== selectedApple
-      );
-      state.apple_list = filteredItems;
-      state.droped_apple_list = [
-        ...state.droped_apple_list,
-        { ...selectedApple, isInBasket: true },
-      ];
+      const newList = state.apple_list.map((apple: AppleProps) => {
+        if (apple.id === action.payload) {
+          return { ...apple, isInBasket: true };
+        } else {
+          return apple;
+        }
+      });
+      state.apple_list = newList;
     },
     resetTree: () => {
       return {
         apple_list: generateApple(),
-        droped_apple_list: [],
-        total_number_of_fall_apple: 0,
         isShaking: false,
       };
     },
@@ -78,15 +68,20 @@ export const treeSlice = createSlice({
 export const { shakeTheTree, moveAppleToBasket, dropRandomlyApple, resetTree } =
   treeSlice.actions;
 
-export const selectApplesOnTree = (state: RootState) => state.tree.apple_list;
-export const selectDropedApples = (state: RootState) =>
-  state.tree.droped_apple_list;
+export const selectApplesOnTree = (state: RootState) =>
+  state.tree.apple_list.filter((apple: AppleProps) => apple.isFall === false);
+export const selectApplesInBasket = (state: RootState) =>
+  state.tree.apple_list.filter(
+    (apple: AppleProps) => apple.isInBasket === true
+  );
 export const selectnumberOfFallApple = (state: RootState) =>
-  state.tree.total_number_of_fall_apple;
+  state.tree.apple_list.filter((apple: AppleProps) => apple.isFall === true)
+    .length;
 export const selectIsShaking = (state: RootState) => state.tree.isShaking;
 export const selectIsTreeBusy = (state: RootState) =>
   state.tree.isShaking ||
-  !!state.tree.apple_list.filter((apple: AppleProps) => apple.isFall === true)
-    .length;
+  !!state.tree.apple_list.filter(
+    (apple: AppleProps) => apple.isFall === true && apple.isInBasket === false
+  ).length;
 
 export default treeSlice.reducer;
