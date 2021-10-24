@@ -10,17 +10,18 @@ const uniqueId = (index: number) => {
 };
 
 export const generateApple = () => {
-  let appleArr: Array<AppleProps>;
-  appleArr = [...Array(getRandomInteger(12, 20))].map((x, i) => {
-    return {
-      id: uniqueId(i),
-      top: `${getRandomInteger(20, 40)}%`,
-      left: `${getRandomInteger(14, 80)}%`,
-      isFall: false,
-      isInBasket: false,
-      fallTimeout: getRandomInteger(1000, 4000),
-    };
-  });
+  const appleArr: Array<AppleProps> = [...Array(getRandomInteger(12, 20))].map(
+    (x, i) => {
+      return {
+        id: uniqueId(i),
+        top: `${getRandomInteger(20, 40)}%`,
+        left: `${getRandomInteger(14, 80)}%`,
+        isFall: false,
+        isInBasket: false,
+        fallTimeout: getRandomInteger(1000, 4000),
+      };
+    }
+  );
 
   return appleArr;
 };

@@ -17,7 +17,6 @@ const Apple: React.FC<AppleProps> = ({
   fallTimeout,
 }) => {
   const dispatch = useAppDispatch();
-
   const [isFallTime, setIsFallTime] = useState(false);
 
   useEffect(() => {

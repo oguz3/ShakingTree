@@ -13,11 +13,9 @@ function Tree() {
     <div>
       <div className={cn(styles.tree, isShaking && "shake")}>
         <img src={tree_image} alt="tree" />
-        {applesOnTree &&
-          !!applesOnTree.length &&
-          applesOnTree.map((apple) => {
-            return <Apple key={apple.id} {...apple} />;
-          })}
+        {applesOnTree.map((apple) => {
+          return <Apple key={apple.id} {...apple} />;
+        })}
       </div>
     </div>
   );
